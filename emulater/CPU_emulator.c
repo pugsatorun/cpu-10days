@@ -72,9 +72,11 @@ void main(void){
 
     do{
         ir = rom[pc];
+        printf("   PC   IR  reg[0] reg[1] reg[2] reg[3]\n");
         printf("%5d %5x %5d %5d %5d %5d \n", pc, ir, reg[0], reg[1], reg[2], reg[3]);
         //プログラムカウンタの更新
         pc = pc + 1;
+        //printf("\n%d\n",op_code(ir));
         //命令コードの判別
         //各命令ごとに実行
         switch(op_code(ir)){
@@ -209,7 +211,7 @@ short op_code(short ir){
 }
 // 関数op_regA
 short op_regA(short ir){
-    return ((ir >> 5) & 0x0007);
+    return ((ir >> 8) & 0x0007);
 }
 // 関数op_regB
 short op_regB(short ir){
